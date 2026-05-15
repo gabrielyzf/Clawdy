@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>显化 App — Demo</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #e8e0d8; font-family: Georgia, serif; display: flex; gap: 20px; padding: 30px; justify-content: center; flex-wrap: wrap; }
+  .phone { width: 375px; height: 750px; background: #faf7f5; border-radius: 40px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.25); position: relative; border: 8px solid #1a1a1a; flex-shrink: 0; }
+  .screen { height: 100%; overflow: hidden; display: flex; flex-direction: column; }
+  .content { flex: 1; overflow: hidden; padding: 20px 16px 80px; }
+  .nav { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(255,255,255,0.95); border-top: 1px solid rgba(0,0,0,0.06); display: flex; justify-content: space-around; padding: 8px 0 14px; }
+  .nav-item { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 11px; color: #a09080; padding: 6px 12px; border-radius: 12px; }
+  .nav-item.active { background: #f3d9e7; color: #c084a0; }
+  .nav-item span:first-child { font-size: 20px; }
+
+  /* Home screen */
+  .hero { background: linear-gradient(135deg, #fdf3dc 0%, #f3d9e7 60%, #e0f0f7 100%); border-radius: 20px; padding: 24px 20px; margin-bottom: 14px; text-align: center; }
+  .hero-date { font-size: 12px; color: #a09080; margin-bottom: 4px; }
+  .hero-title { font-size: 22px; font-weight: 700; color: #2d2320; margin-bottom: 8px; }
+  .streak-badge { display: inline-flex; align-items: center; gap: 5px; background: rgba(212,168,83,0.2); padding: 4px 12px; border-radius: 999px; font-size: 12px; color: #d4a853; font-weight: 600; margin-bottom: 12px; }
+  .affirmation { background: rgba(255,255,255,0.75); border-radius: 12px; padding: 12px 16px; font-style: italic; color: #6a5a50; line-height: 1.7; font-size: 13px; }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .stat-card { background: white; border-radius: 16px; padding: 14px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+  .stat-emoji { font-size: 22px; margin-bottom: 4px; }
+  .stat-num { font-size: 26px; font-weight: 700; color: #c084a0; }
+  .stat-label { font-size: 11px; color: #2d2320; font-weight: 600; }
+  .stat-sub { font-size: 10px; color: #a09080; }
+
+  /* Wishes screen */
+  .btn-primary { background: linear-gradient(135deg, #c084a0, #d4a853); color: white; border-radius: 999px; padding: 10px; width: 100%; border: none; font-size: 14px; font-family: Georgia, serif; cursor: pointer; margin-bottom: 14px; }
+  .wish-item { background: white; border-radius: 16px; padding: 14px; margin-bottom: 10px; border: 1.5px solid transparent; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+  .wish-item.gold { border-color: #d4a853; background: #fdf9ee; }
+  .wish-row { display: flex; gap: 10px; align-items: flex-start; }
+  .wish-emoji { font-size: 22px; }
+  .wish-text { font-style: italic; color: #2d2320; line-height: 1.5; font-size: 13px; }
+  .wish-meta { display: flex; gap: 6px; margin-top: 6px; align-items: center; }
+  .tag { background: #f3d9e7; color: #c084a0; font-size: 10px; padding: 2px 8px; border-radius: 999px; }
+  .wish-date { font-size: 10px; color: #a09080; }
+  .confirm-btn { margin-top: 8px; width: 100%; padding: 6px; border-radius: 999px; border: 1.5px solid #c084a0; background: transparent; color: #c084a0; font-size: 12px; font-family: Georgia, serif; cursor: pointer; }
+  .confirmed { text-align: center; font-size: 12px; color: #d4a853; margin-top: 6px; }
+
+  /* Diary screen */
+  .diary-entry { background: #fffdf9; border-left: 3px solid #c084a0; border-radius: 0 14px 14px 0; padding: 12px 14px; margin-bottom: 10px; }
+  .diary-header { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
+  .diary-text { font-size: 13px; color: #4a3a30; line-height: 1.7; }
+
+  /* Vision board */
+  .vision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .vision-card { border-radius: 16px; padding: 16px; border: 1px solid rgba(212,168,83,0.2); }
+  .vision-card-emoji { font-size: 28px; margin-bottom: 6px; }
+  .vision-card-text { font-size: 12px; color: #4a3a30; line-height: 1.5; }
+
+  .section-title { font-size: 20px; font-weight: 700; color: #2d2320; margin-bottom: 4px; }
+  .section-sub { font-size: 12px; color: #a09080; margin-bottom: 16px; }
+
+  .label { position: absolute; top: -36px; left: 0; right: 0; text-align: center; font-family: -apple-system, sans-serif; font-size: 14px; font-weight: 600; color: #444; }
+</style>
+</head>
+<body>
+
+<!-- Screen 1: Home -->
+<div style="position:relative;">
+  <div class="label">🏠 主页</div>
+  <div class="phone">
+    <div class="screen">
+      <div class="content">
+        <div class="hero">
+          <div class="hero-date">2026年5月12日 星期二</div>
+          <div class="hero-title">✨ 显化每一天</div>
+          <div class="streak-badge">🔥 连续 7 天</div>
+          <div class="affirmation">"宇宙正在为我安排最好的一切 🌌"</div>
+        </div>
+        <div class="stats">
+          <div class="stat-card"><div class="stat-emoji">✨</div><div class="stat-num">3</div><div class="stat-label">我的愿望</div><div class="stat-sub">今日确认 2</div></div>
+          <div class="stat-card"><div class="stat-emoji">📖</div><div class="stat-num">12</div><div class="stat-label">日记记录</div><div class="stat-sub">显化旅程</div></div>
+          <div class="stat-card"><div class="stat-emoji">🎨</div><div class="stat-num">5</div><div class="stat-label">显化板卡片</div><div class="stat-sub">梦想画面</div></div>
+          <div class="stat-card"><div class="stat-emoji">🔥</div><div class="stat-num">7</div><div class="stat-label">连续天数</div><div class="stat-sub">坚持打卡</div></div>
+        </div>
+      </div>
+      <div class="nav">
+        <div class="nav-item active"><span>🏠</span><span>主页</span></div>
+        <div class="nav-item"><span>✨</span><span>愿望</span></div>
+        <div class="nav-item"><span>📖</span><span>日记</span></div>
+        <div class="nav-item"><span>🎨</span><span>显化板</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Screen 2: Wishes -->
+<div style="position:relative;">
+  <div class="label">✨ 愿望页</div>
+  <div class="phone">
+    <div class="screen">
+      <div class="content">
+        <div class="section-title">✨ 我的愿望</div>
+        <div class="section-sub">今日已显化 2 / 3 个愿望</div>
+        <button class="btn-primary">+ 写下新愿望</button>
+        <div class="wish-item gold">
+          <div class="wish-row">
+            <div class="wish-emoji">💰</div>
+            <div>
+              <div class="wish-text">我拥有财务自由，每个月有充足的被动收入</div>
+              <div class="wish-meta"><span class="tag">财富</span><span class="wish-date">2026-05-01</span></div>
+            </div>
+          </div>
+          <div class="confirmed">🌟 今日已显化</div>
+        </div>
+        <div class="wish-item gold">
+          <div class="wish-row">
+            <div class="wish-emoji">❤️</div>
+            <div>
+              <div class="wish-text">我的感情幸福甜蜜，充满爱与理解</div>
+              <div class="wish-meta"><span class="tag">爱情</span><span class="wish-date">2026-05-03</span></div>
+            </div>
+          </div>
+          <div class="confirmed">🌟 今日已显化</div>
+        </div>
+        <div class="wish-item">
+          <div class="wish-row">
+            <div class="wish-emoji">🏠</div>
+            <div>
+              <div class="wish-text">我住在一间有落地窗、阳光充足的理想家园</div>
+              <div class="wish-meta"><span class="tag">其他</span><span class="wish-date">2026-05-10</span></div>
+            </div>
+          </div>
+          <button class="confirm-btn">✨ 今日显化确认</button>
+        </div>
+      </div>
+      <div class="nav">
+        <div class="nav-item"><span>🏠</span><span>主页</span></div>
+        <div class="nav-item active"><span>✨</span><span>愿望</span></div>
+        <div class="nav-item"><span>📖</span><span>日记</span></div>
+        <div class="nav-item"><span>🎨</span><span>显化板</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Screen 3: Diary -->
+<div style="position:relative;">
+  <div class="label">📖 日记页</div>
+  <div class="phone">
+    <div class="screen">
+      <div class="content">
+        <div class="section-title">📖 显化日记</div>
+        <div class="section-sub">记录你的显化旅程与感恩时刻</div>
+        <button class="btn-primary">+ 写今日日记</button>
+        <div class="diary-entry">
+          <div class="diary-header">
+            <span style="font-size:16px">🙏</span>
+            <span style="font-size:11px;color:#c084a0">感恩</span>
+            <span style="font-size:11px;color:#a09080">· 2026-05-12</span>
+          </div>
+          <div class="diary-text">今天收到了一个意外的好消息，感觉宇宙真的在回应我的愿望。早上看到一篇关于被动收入的文章，觉得一切都在往好的方向走...</div>
+        </div>
+        <div class="diary-entry">
+          <div class="diary-header">
+            <span style="font-size:16px">🌟</span>
+            <span style="font-size:11px;color:#c084a0">充满希望</span>
+            <span style="font-size:11px;color:#a09080">· 2026-05-11</span>
+          </div>
+          <div class="diary-text">和一个朋友聊天，发现我们有共同的目标，感觉遇到了同频的人。相信美好的事情正在发生 🌸</div>
+        </div>
+        <div class="diary-entry">
+          <div class="diary-header">
+            <span style="font-size:16px">🕊️</span>
+            <span style="font-size:11px;color:#c084a0">平静</span>
+            <span style="font-size:11px;color:#a09080">· 2026-05-10</span>
+          </div>
+          <div class="diary-text">今天冥想了20分钟，感到内心很平静。放下了对结果的执念，相信一切自有安排。</div>
+        </div>
+      </div>
+      <div class="nav">
+        <div class="nav-item"><span>🏠</span><span>主页</span></div>
+        <div class="nav-item"><span>✨</span><span>愿望</span></div>
+        <div class="nav-item active"><span>📖</span><span>日记</span></div>
+        <div class="nav-item"><span>🎨</span><span>显化板</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Screen 4: Vision Board -->
+<div style="position:relative;">
+  <div class="label">🎨 显化板</div>
+  <div class="phone">
+    <div class="screen">
+      <div class="content">
+        <div class="section-title">🎨 显化板</div>
+        <div class="section-sub">用卡片拼出你想要的生活</div>
+        <button class="btn-primary">+ 添加卡片</button>
+        <div class="vision-grid">
+          <div class="vision-card" style="background:linear-gradient(135deg,#fdf3dc,#f3d9e7)">
+            <div class="vision-card-emoji">🏖️</div>
+            <div class="vision-card-text">每年去一个新的国家旅行，感受世界的美好</div>
+          </div>
+          <div class="vision-card" style="background:linear-gradient(135deg,#e0f0f7,#d9eaf3)">
+            <div class="vision-card-emoji">🏠</div>
+            <div class="vision-card-text">住在有落地窗的家，阳光洒满整个客厅</div>
+          </div>
+          <div class="vision-card" style="background:linear-gradient(135deg,#f5e6fa,#fdf3dc)">
+            <div class="vision-card-emoji">💎</div>
+            <div class="vision-card-text">财务自由，时间自由，做自己热爱的事</div>
+          </div>
+          <div class="vision-card" style="background:linear-gradient(135deg,#e8f5e9,#e0f0f7)">
+            <div class="vision-card-emoji">💪</div>
+            <div class="vision-card-text">身体健康，充满活力，每天都精力满满</div>
+          </div>
+        </div>
+      </div>
+      <div class="nav">
+        <div class="nav-item"><span>🏠</span><span>主页</span></div>
+        <div class="nav-item"><span>✨</span><span>愿望</span></div>
+        <div class="nav-item"><span>📖</span><span>日记</span></div>
+        <div class="nav-item active"><span>🎨</span><span>显化板</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
