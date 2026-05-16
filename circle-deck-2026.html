@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circle in 2026: The Stablecoin Infrastructure Play</title>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+/* === VIEWPORT BASE (MANDATORY) === */
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+.slide {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.slide-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-height: 100%;
+    overflow: hidden;
+    padding: var(--slide-padding);
+}
+:root {
+    --title-size: clamp(1.5rem, 5vw, 4rem);
+    --h2-size: clamp(1.25rem, 3.5vw, 2.5rem);
+    --h3-size: clamp(1rem, 2.5vw, 1.75rem);
+    --body-size: clamp(0.75rem, 1.5vw, 1.125rem);
+    --small-size: clamp(0.65rem, 1vw, 0.875rem);
+    --slide-padding: clamp(1rem, 4vw, 4rem);
+    --content-gap: clamp(0.5rem, 2vw, 2rem);
+    --element-gap: clamp(0.25rem, 1vw, 1rem);
+    /* Bold Signal Colors */
+    --bg-primary: #0d0d0d;
+    --bg-gradient: linear-gradient(135deg, #0d0d0d 0%, #1a1a2e 50%, #0d0d0d 100%);
+    --card-bg: #FF5722;
+    --card-alt: #00BFA5;
+    --card-blue: #2979FF;
+    --card-purple: #7C4DFF;
+    --card-gold: #FFB300;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255,255,255,0.7);
+    --text-on-card: #0d0d0d;
+}
+@media (max-height: 700px) {
+    :root {
+        --slide-padding: clamp(0.75rem, 3vw, 2rem);
+        --content-gap: clamp(0.4rem, 1.5vw, 1rem);
+        --title-size: clamp(1.25rem, 4.5vw, 2.5rem);
+        --h2-size: clamp(1rem, 3vw, 1.75rem);
+    }
+}
+@media (max-height: 600px) {
+    :root {
+        --slide-padding: clamp(0.5rem, 2.5vw, 1.5rem);
+        --content-gap: clamp(0.3rem, 1vw, 0.75rem);
+        --title-size: clamp(1.1rem, 4vw, 2rem);
+        --body-size: clamp(0.7rem, 1.2vw, 0.95rem);
+    }
+    .nav-dots, .keyboard-hint, .decorative { display: none; }
+}
+@media (max-height: 500px) {
+    :root {
+        --slide-padding: clamp(0.4rem, 2vw, 1rem);
+        --title-size: clamp(1rem, 3.5vw, 1.5rem);
+        --h2-size: clamp(0.9rem, 2.5vw, 1.25rem);
+        --body-size: clamp(0.65rem, 1vw, 0.85rem);
+    }
+}
+@media (max-width: 600px) {
+    :root { --title-size: clamp(1.25rem, 7vw, 2.5rem); }
+    .grid { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.2s !important;
+    }
+    html { scroll-behavior: auto; }
+}
+
+/* === GLOBAL STYLES === */
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+h1, h2, h3 {
+    font-family: 'Archivo Black', sans-serif;
+    margin: 0;
+    line-height: 1.1;
+}
+h1 { font-size: var(--title-size); }
+h2 { font-size: var(--h2-size); }
+h3 { font-size: var(--h3-size); }
+p, li { font-size: var(--body-size); line-height: 1.5; }
+ul { list-style: none; padding: 0; margin: 0; }
+
+/* === SLIDE BACKGROUNDS === */
+.slide {
+    background: var(--bg-gradient);
+}
+.slide::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+        radial-gradient(ellipse at 20% 80%, rgba(255,87,34,0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(41,121,255,0.05) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* === SLIDE NUMBER === */
+.slide-number {
+    position: absolute;
+    top: clamp(1rem, 3vw, 2rem);
+    left: clamp(1rem, 3vw, 2rem);
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(3rem, 8vw, 7rem);
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    z-index: 0;
+}
+
+/* === CARD STYLES === */
+.accent-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: clamp(1rem, 2.5vw, 2rem);
+    color: var(--text-on-card);
+    max-width: min(90vw, 800px);
+}
+.accent-card.teal { background: var(--card-alt); }
+.accent-card.blue { background: var(--card-blue); color: #fff; }
+.accent-card.purple { background: var(--card-purple); color: #fff; }
+.accent-card.gold { background: var(--card-gold); }
+
+/* === STAT GRID === */
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+    gap: clamp(0.5rem, 1.5vw, 1rem);
+    margin-top: var(--content-gap);
+}
+.stat-item {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: clamp(0.6rem, 1.5vw, 1.2rem);
+    text-align: center;
+}
+.stat-value {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(1.2rem, 3vw, 2.2rem);
+    color: var(--card-bg);
+    display: block;
+}
+.stat-label {
+    font-size: var(--small-size);
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+    display: block;
+}
+
+/* === BULLET LIST === */
+.bullet-list li {
+    padding: clamp(0.3rem, 0.8vw, 0.6rem) 0;
+    padding-left: 1.5em;
+    position: relative;
+    font-size: var(--body-size);
+}
+.bullet-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--card-bg);
+    font-weight: 700;
+}
+
+/* === TIMELINE === */
+.timeline-item {
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(0.5rem, 1.5vw, 1rem);
+    padding: clamp(0.4rem, 1vw, 0.8rem) 0;
+}
+.timeline-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    flex-shrink: 0;
+    margin-top: 0.4em;
+}
+.timeline-text {
+    font-size: var(--body-size);
+    color: var(--text-secondary);
+}
+.timeline-text strong {
+    color: var(--text-primary);
+}
+
+/* === ANIMATIONS === */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* === NAV DOTS === */
+.nav-dots {
+    position: fixed;
+    right: clamp(0.5rem, 2vw, 1.5rem);
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 100;
+}
+.nav-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.nav-dot.active {
+    background: var(--card-bg);
+    transform: scale(1.4);
+}
+
+/* === INLINE EDITING === */
+.edit-toggle {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 1000;
+    background: rgba(255,87,34,0.9);
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+.edit-toggle:hover, body:hover .edit-toggle { opacity: 1; }
+body.editing [contenteditable] {
+    outline: 1px dashed rgba(255,87,34,0.5);
+    cursor: text;
+}
+    </style>
+</head>
+<body>
+
+<!-- Edit Toggle -->
+<button class="edit-toggle" onclick="toggleEdit()">✏️ Edit (E)</button>
+
+<!-- Navigation Dots -->
+<nav class="nav-dots" aria-label="Slide navigation">
+    <div class="nav-dot active" data-slide="0"></div>
+    <div class="nav-dot" data-slide="1"></div>
+    <div class="nav-dot" data-slide="2"></div>
+    <div class="nav-dot" data-slide="3"></div>
+    <div class="nav-dot" data-slide="4"></div>
+    <div class="nav-dot" data-slide="5"></div>
+    <div class="nav-dot" data-slide="6"></div>
+    <div class="nav-dot" data-slide="7"></div>
+    <div class="nav-dot" data-slide="8"></div>
+    <div class="nav-dot" data-slide="9"></div>
+</nav>
+
+<!-- === SLIDE 1: TITLE === -->
+<section class="slide" id="slide-0">
+    <div class="slide-content" style="align-items:center; text-align:center;">
+        <div class="reveal">
+            <p style="font-size:var(--small-size); letter-spacing:0.3em; text-transform:uppercase; color:var(--card-bg); margin-bottom:var(--content-gap);">Research Deck · May 2026</p>
+        </div>
+        <h1 class="reveal reveal-delay-1" contenteditable="false">Circle in 2026</h1>
+        <div class="reveal reveal-delay-2" style="margin-top:var(--element-gap);">
+            <div class="accent-card" style="display:inline-block; padding:clamp(0.5rem,1.5vw,1rem) clamp(1rem,3vw,2rem);">
+                <h3 style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:600;">The Stablecoin Infrastructure Play</h3>
+            </div>
+        </div>
+        <p class="reveal reveal-delay-3" style="color:var(--text-secondary); margin-top:var(--content-gap); max-width:600px;">NYSE: CRCL · USDC · $78B Circulation · 90x Velocity</p>
+    </div>
+</section>
+
+<!-- === SLIDE 2: CIRCLE OVERVIEW === -->
+<section class="slide" id="slide-1">
+    <span class="slide-number">01</span>
+    <div class="slide-content">
+        <h2 class="reveal" contenteditable="false">Circle Overview</h2>
+        <p class="reveal reveal-delay-1" style="color:var(--text-secondary); margin:var(--element-gap) 0 var(--content-gap);">First major stablecoin issuer to list on a US stock exchange</p>
+        <div class="stat-grid reveal reveal-delay-2">
+            <div class="stat-item">
+                <span class="stat-value">$31</span>
+                <span class="stat-label">IPO Price (Mid-2025)</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">+750%</span>
+                <span class="stat-label">Post-IPO Surge</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">$299</span>
+                <span class="stat-label">All-Time High</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">$29.5B</span>
+                <span class="stat-label">Market Cap (2026)</span>
+            </div>
+        </div>
+        <p class="reveal reveal-delay-3" style="color:var(--text-secondary); margin-top:var(--content-gap); font-size:var(--small-size);">Current price ~$100-121 · Corrected 60%+ from ATH · P/S ratio 14.5x</p>
+    </div>
+</section>
+
+<!-- === SLIDE 3: USDC BY THE NUMBERS === -->
+<section class="slide" id="slide-2">
+    <span class="slide-number">02</span>
+    <div class="slide-content">
+        <h2 class="reveal" contenteditable="false">USDC by the Numbers</h2>
+        <div class="stat-grid reveal reveal-delay-1" style="margin-top:var(--content-gap);">
+            <div class="stat-item">
+                <span class="stat-value">$78B</span>
+                <span class="stat-label">Circulation (Q1 2026)</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" style="color:var(--card-alt);">73%</span>
+                <span class="stat-label">Growth in 2025 (vs USDT 36%)</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" style="color:var(--card-blue);">90x</span>
+                <span class="stat-label">Velocity ($ cycled 90 times)</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" style="color:var(--card-gold);">857M</span>
+                <span class="stat-label">Transfers Q4 2025</span>
+            </div>
+        </div>
+        <div class="reveal reveal-delay-2" style="margin-top:var(--content-gap);">
+            <div class="accent-card teal" style="display:inline-block;">
+                <p style="margin:0; font-weight:600;">Average transaction: $557 — a B2B settlement pattern, not retail</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- === SLIDE 4: GENIUS ACT === -->
+<section class="slide" id="slide-3">
+    <span class="slide-number">03</span>
+    <div class="slide-content">
+        <h2 class="reveal" contenteditable="false">The GENIUS Act</h2>
+        <p class="reveal reveal-delay-1" style="color:var(--card-bg); font-weight:600; margin:var(--element-gap) 0;">First US Federal Stablecoin Law · Signed July 18, 2025</p>
+        <ul class="bullet-list reveal reveal-delay-2" style="margin-top:var(--content-gap);">
+            <li><strong>1:1 reserves required</strong> — T-bills, overnight repos, Fed credits only</li>
+            <li><strong>Monthly audited reserve reports</strong> — mandatory transparency</li>
+            <li><strong>OCC final rules</strong> — due July 2026</li>
+            <li><strong>Full enforcement</strong> — January 18, 2027</li>
+            <li><strong>Circle is THE compliance-first incumbent</strong> — positioned since Day 1</li>
+        </ul>
+    </div>
+</section>
+
+<!-- === SLIDE 5: REVENUE MODEL === -->
+<section class="slide" id="slide-4">
+    <span class="slide-number">04</span>
+    <div class="slide-content">
+        <h2 class="reveal" contenteditable="false">Revenue Model</h2>
+        <p class="reveal reveal-delay-1" style="color:var(--text-secondary); margin-bottom:var(--content-gap);">A scaled Treasury yield capture machine</p>
+        <div class="stat-grid reveal reveal-delay-2">
+            <div class="stat-item">
+                <span class="stat-value">$1.25B</span>
+                <span class="stat-label">H1 Revenue</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" style="color:var(--card-alt);">95.5%</span>
+                <span class="stat-label">From Interest Income</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" style="color:var(--card-blue);">+54%</span>
+                <span class="stat-label">Revenue YoY</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" style="color:var(--card-gold);">~40%</span>
+                <span class="stat-label">Growth Forecast → 2027</span>
+            </div>
+        </div>
+        <div class="reveal reveal-delay-3" style="margin-top:var(--content-gap);">
+            <div class="accent-card gold" style="display:inline-block;">
+                <p style="margin:0; font-weight:600;">Quarterly: $672M revenue · $131M adj. EBITDA (+53% YoY)</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- === SLIDE 6: INSTITUTIONAL ADOPTION === -->
+<section class="slide" id="slide-5">
+    <span class="slide-number">05</span>
+    <div class="slide-content">
+        <h2 class="reveal" contenteditable="false">Institutional Adoption Wave</h2>
+        <ul class="bullet-list" style="margin-top:var(--content-gap);">
+            <li class="reveal reveal-delay-1"><strong>Visa</strong> — settles cross-border payments in USDC</li>
+            <li class="reveal reveal-delay-2"><strong>Stripe</strong> — enabled USDC in 100+ countries</li>
+            <li class="reveal reveal-delay-3"><strong>FIS</strong> — partnership for cross-border settlement</li>
+            <li class="reveal reveal-delay-4"><strong>JPMorgan Kinexys</strong> — stablecoin infrastructure</li>
+        </ul>
+        <div class="reveal reveal-delay-4" style="margin-top:var(--content-gap);">
+            <div class="accent-card blue" style="display:inline-block;">
+                <p style="margin:0; font-weight:600;">Mastercard acquired BVNK for $1.8B (March 2026)</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- === SLIDE 7: MARKET LANDSCAPE === -->
+<section class="slide" id="slide-6">
+    <span class="slide-number">06</span>
+    <div class="slide-content">
+        <h2 class="reveal" contenteditable="false">Stablecoin Market Landscape</h2>
+        <div class="stat-grid reveal reveal-delay-1" style="margin-top:var(--content-gap);">
+            <div class="stat-item">
+                <span class="stat-value">$320B</span>
+                <span class="stat-label">Total Market</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" style="color:var(--card-bg);">$33T+</span>
+                <span class="stat-label">On-chain Volume 2025</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" style="color:var(--card-alt);">93%</span>
+                <span class="stat-label">USDT + USDC Share</span>
+            </div>
+        </div>
+        <div class="reveal reveal-delay-2" style="margin-top:var(--content-gap);">
+            <ul class="bullet-list">
+                <li>On-chain volume <strong>surpassed Visa's</strong> annual network volume</li>
+                <li>Citigroup 2030 forecast: <strong>$1.9T</strong> base / <strong>$4.2T</strong> bull</li>
+                <li>Stablecoin issuers hold <strong>$155B in US T-bills</strong> (17th largest holder)</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- === SLIDE 8: EUROPE / MiCA === -->
+<section class="slide" id="slide-7">
+    <span class="slide-number">07</span>
+    <div class="slide-content">
+        <h2 class="reveal" contenteditable="false">Europe Strategy: MiCA</h2>
+        <div class="stat-grid reveal reveal-delay-1" style="margin-top:var(--content-gap);">
+            <div class="stat-item">
+                <span class="stat-value" style="color:var(--card-alt);">+337%</span>
+                <span class="stat-label">USDC Europe Volume Jump (H1 2025)</span>
+            </div>
+        </div>
+        <ul class="bullet-list reveal reveal-delay-2" style="margin-top:var(--content-gap);">
+            <li>USDT <strong>broadly delisted</strong> from EU exchanges (Coinbase, Kraken, Binance)</li>
+            <li>Circle <strong>first to achieve MiCA compliance</strong> (July 2024)</li>
+            <li>USDC is the <strong>default compliant option</strong> in Europe</li>
+            <li>MiCA full effect since December 30, 2024</li>
+        </ul>
+    </div>
+</section>
+
+<!-- === SLIDE 9: KEY RISKS === -->
+<section class="slide" id="slide-8">
+    <span class="slide-number">08</span>
+    <div class="slide-content">
+        <h2 class="reveal" contenteditable="false" style="color:#FF5252;">Key Risks</h2>
+        <ul class="bullet-list reveal reveal-delay-1" style="margin-top:var(--content-gap);">
+            <li><strong>Rate sensitivity</strong> — 95.5% revenue from interest; Fed cuts = margin compression</li>
+            <li><strong>Tether dominance</strong> — USDT still owns 60-73% of retail</li>
+            <li><strong>New competition</strong> — banks can now issue stablecoins post-GENIUS Act</li>
+            <li><strong>Political wildcard</strong> — USD1 grabbed share rapidly without fundamentals</li>
+            <li><strong>Priced in?</strong> — stock already corrected 60%+ from ATH of $299</li>
+        </ul>
+    </div>
+</section>
+
+<!-- === SLIDE 10: THE BIG PICTURE === -->
+<section class="slide" id="slide-9">
+    <span class="slide-number">09</span>
+    <div class="slide-content" style="align-items:center; text-align:center;">
+        <h2 class="reveal" contenteditable="false">The Big Picture</h2>
+        <div class="reveal reveal-delay-1" style="margin-top:var(--content-gap);">
+            <div class="accent-card" style="max-width:600px;">
+                <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:600; margin-bottom:0.5em;">Circle Payments Network (CPN)</h3>
+                <p style="margin:0;">Targeting SWIFT displacement — multi-trillion dollar B2B payments & remittance market</p>
+            </div>
+        </div>
+        <div class="reveal reveal-delay-2" style="margin-top:var(--content-gap); max-width:700px;">
+            <ul class="bullet-list" style="text-align:left;">
+                <li>"Winner-take-segment" — not winner-take-all</li>
+                <li><strong>USDC = institutional rail</strong> · USDT = retail rail</li>
+                <li>Market early in adoption curve: <strong>$320B → $1.9T+ by 2030</strong></li>
+            </ul>
+        </div>
+        <p class="reveal reveal-delay-3" style="color:var(--text-secondary); margin-top:var(--content-gap); font-size:var(--small-size);">⌨️ Arrow keys / Space / Scroll to navigate · Press E to edit</p>
+    </div>
+</section>
+
+<script>
+/* === INTERSECTION OBSERVER FOR ANIMATIONS === */
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.2 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* === NAV DOTS === */
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.nav-dot');
+const slideObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const idx = [...slides].indexOf(entry.target);
+            dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+        }
+    });
+}, { threshold: 0.5 });
+slides.forEach(s => slideObserver.observe(s));
+dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+        slides[dot.dataset.slide].scrollIntoView({ behavior: 'smooth' });
+    });
+});
+
+/* === KEYBOARD NAVIGATION === */
+document.addEventListener('keydown', (e) => {
+    if (document.body.classList.contains('editing') && e.key !== 'Escape') return;
+    const current = [...slides].findIndex(s => {
+        const r = s.getBoundingClientRect();
+        return r.top >= -50 && r.top <= window.innerHeight / 2;
+    });
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault();
+        if (current < slides.length - 1) slides[current + 1].scrollIntoView({ behavior: 'smooth' });
+    }
+    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        if (current > 0) slides[current - 1].scrollIntoView({ behavior: 'smooth' });
+    }
+    if (e.key === 'e' || e.key === 'E') toggleEdit();
+});
+
+/* === INLINE EDITING === */
+function toggleEdit() {
+    document.body.classList.toggle('editing');
+    const editing = document.body.classList.contains('editing');
+    document.querySelectorAll('[contenteditable]').forEach(el => {
+        el.contentEditable = editing ? 'true' : 'false';
+    });
+}
+document.addEventListener('keydown', (e) => {
+    if (e.ctrlKey && e.key === 's') {
+        e.preventDefault();
+        localStorage.setItem('circle-deck-edits', document.body.innerHTML);
+        alert('Saved to localStorage');
+    }
+});
+// Restore edits
+const saved = localStorage.getItem('circle-deck-edits');
+if (saved) document.body.innerHTML = saved;
+</script>
+</body>
+</html>
