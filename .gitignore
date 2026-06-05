@@ -43,3 +43,4 @@ coding-harness/
 __pycache__/
 *.pyc
 .git.backup/
+projects/trendsense-agent/
