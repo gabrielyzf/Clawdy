@@ -1,0 +1,61 @@
+# config/sources.yaml
+# Signal source registry. Each source belongs to a layer; each layer
+# has a default trust weight in [0.0, 1.0]. Per-source overrides are
+# allowed via the `weight` key.
+
+layers:
+  primary:
+    description: "Primary disclosures (filings, exchange notices)."
+    default_weight: 0.95
+  market:
+    description: "Market data — prices, volumes, options, on-chain."
+    default_weight: 0.90
+  reputable:
+    description: "Established mainstream news outlets."
+    default_weight: 0.70
+  analyst:
+    description: "Sell-side notes, expert blogs, research letters."
+    default_weight: 0.55
+  social:
+    description: "Curated social handles."
+    default_weight: 0.30
+  alt:
+    description: "Alt-data, scrapes, niche feeds."
+    default_weight: 0.25
+
+sources:
+  # --- primary ---
+  - id: sec_edgar
+    layer: primary
+    kind: filings
+    enabled: false
+  # --- market ---
+  - id: yfinance
+    layer: market
+    kind: ohlcv
+    enabled: false
+  # --- reputable ---
+  - id: reuters_rss
+    layer: reputable
+    kind: rss
+    enabled: false
+  - id: bloomberg_rss
+    layer: reputable
+    kind: rss
+    enabled: false
+    weight: 0.75
+  # --- analyst ---
+  - id: substack_curated
+    layer: analyst
+    kind: rss
+    enabled: false
+  # --- social ---
+  - id: x_curated
+    layer: social
+    kind: handles
+    enabled: false
+  # --- alt ---
+  - id: scraper_default
+    layer: alt
+    kind: scrape
+    enabled: false

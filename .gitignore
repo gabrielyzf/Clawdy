@@ -29,3 +29,17 @@ npm-debug.log*
 # Cache
 .cache/
 *.swp
+.trash/
+
+# Personal session notes / topic logs (not for public repo)
+memory/
+topics/
+handoff/
+coding-sandbox/
+coding-harness/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.git.backup/
