@@ -405,6 +405,158 @@ Review intervals: 1d → 3d → 7d → 14d → 30d.
 - Next review: 2026-06-06
 - Status: new
 
+## una escapada
+- Forms: noun (f.)
+- Meaning: a getaway, short trip
+- Collocations: una escapada de fin de semana, hacer una escapada a, una escapada rápida
+- Synonym: un viaje corto, una huida (de la rutina)
+- Antonym: un viaje largo, una mudanza
+- Hypernym: viaje
+- Example: Estamos planeando una escapada de tres días a Granada.
+- Added: 2026-06-09
+- Next review: 2026-06-10
+- Status: new
+
+## con (mucha) antelación
+- Forms: fixed adverbial phrase
+- Meaning: well in advance
+- Collocations: reservar con antelación, avisar con antelación, comprar con dos meses de antelación
+- Synonym: con tiempo, por adelantado
+- Antonym: de última hora, sobre la marcha, a destiempo
+- Example: La entrada a la Alhambra hay que reservarla con mucha antelación.
+- Added: 2026-06-09
+- Next review: 2026-06-10
+- Status: new
+
+## merecer la pena
+- Forms: impersonal expr. (merece la pena + inf./sust.)
+- Meaning: to be worth it
+- Collocations: merece la pena ir, no merece la pena pagar tanto, merece mucho la pena
+- Synonym: valer la pena, compensar
+- Antonym: no compensa, no valer la pena
+- Common mistake: ❌ merece la pena DE ir → ✅ merece la pena ir (sin "de").
+- Example: Aunque la subida es dura, merece la pena por las vistas.
+- Added: 2026-06-09
+- Next review: 2026-06-10
+- Status: new
+
+## hacer noche en
+- Forms: verb collocation (hacer + noche + en + lugar)
+- Meaning: to spend the night in (during a journey, en route)
+- Collocations: hacer noche en Córdoba, hacemos noche allí y seguimos, una parada para hacer noche
+- Synonym: pasar la noche en, pernoctar en (formal)
+- Antonym: seguir de paso, no parar, viajar del tirón
+- Hypernym: alojarse
+- Example: De camino a Granada hacemos noche en Córdoba para ver la mezquita.
+- Added: 2026-06-09
+- Next review: 2026-06-10
+- Status: new
+
+## de paso
+- Forms: fixed adverbial / discourse marker
+- Meaning: on the way / while you're at it / by the way (action piggy-backed on another)
+- Collocations: de paso, compramos pan; ya que vamos, de paso vemos X; estar de paso (= just passing through)
+- Synonym: aprovechando que, de pasada
+- Antonym: a propósito (deliberadamente, por separado)
+- Common mistake: "estar de paso" ≠ "de paso" como marcador — primero = just visiting; segundo = while you're at it.
+- Example: Vamos al supermercado y, de paso, recogemos el paquete.
+- Added: 2026-06-09
+- Next review: 2026-06-10
+- Status: new
+
+## mover ficha
+- Forms: fixed verb collocation (mover + ficha; sin artículo)
+- Meaning: to make a move (strategic decision — markets, career, negotiation)
+- Collocations: antes de mover ficha, mover ficha pronto, todavía no he movido ficha, le toca mover ficha al rival
+- Synonym: dar el paso, tomar la decisión, actuar
+- Antonym: quedarse quieto, esperar, dudar
+- Hypernym: decidir / actuar
+- Example: Antes de mover ficha en IA, quiero ver dos trimestres más de resultados.
+- Added: 2026-06-10
+- Next review: 2026-06-11
+- Status: new
+
+## tomar posiciones
+- Forms: verb collocation (tomar + posiciones, plural fijo)
+- Meaning: to take positions (markets) / to position oneself (figurative)
+- Collocations: tomar posiciones poco a poco, tomar posiciones largas/cortas, ir tomando posiciones
+- Synonym: posicionarse, entrar (en un activo)
+- Antonym: salirse, replegarse, liquidar
+- Hypernym: invertir
+- Example: Prefiero tomar posiciones poco a poco antes de que el mercado se dé cuenta.
+- Added: 2026-06-10
+- Next review: 2026-06-11
+- Status: new
+
+## dar el salto
+- Forms: verb collocation (dar + el salto + a/hacia)
+- Meaning: to make the leap / to make the jump (career, market, tech)
+- Collocations: dar el salto a la IA, dar el salto al mercado americano, dar el salto definitivo
+- Synonym: hacer el cambio, mover ficha, lanzarse
+- Antonym: quedarse donde estás, seguir igual
+- Example: Muchos analistas tradicionales todavía no han dado el salto a usar agentes de IA.
+- Added: 2026-06-10
+- Next review: 2026-06-11
+- Status: new
+
+## replegarse
+- Forms: reflexive verb (me repliego, se repliega, se replegó)
+- Meaning: to pull back / retreat (markets, military, sports tactics)
+- Collocations: replegarse a posiciones más conservadoras, replegarse en defensa, el mercado se replegó
+- Synonym: retirarse, dar marcha atrás, ser conservador
+- Antonym: lanzarse, jugársela, ir a por todas
+- Hypernym: retroceder
+- Example: Tras el susto del miércoles, el mercado se replegó hacia bonos y oro.
+- Added: 2026-06-10
+- Next review: 2026-06-11
+- Status: new
+
+## estar a la expectativa
+- Forms: estar + a la expectativa (+ de + algo)
+- Meaning: to be on standby / waiting and watching
+- Collocations: estar a la expectativa de un anuncio, mantenerse a la expectativa
+- Synonym: estar al acecho, estar pendiente, esperar a ver
+- Antonym: actuar, mover ficha, lanzarse
+- Example: Yo estoy a la expectativa de la próxima reunión de la Fed antes de mover ficha.
+- Added: 2026-06-10
+- Next review: 2026-06-11
+- Status: new
+
+## ir a contracorriente
+- Forms: ir + a contracorriente (fixed)
+- Meaning: to go against the grain / against consensus
+- Collocations: invertir a contracorriente, una apuesta a contracorriente, ir a contracorriente del mercado
+- Synonym: ir contra la mayoría, llevar la contraria, ser contrarian
+- Antonym: seguir la corriente, ir con la masa
+- Example: Las mejores rentabilidades suelen venir de ir a contracorriente cuando todos venden.
+- Added: 2026-06-10
+- Next review: 2026-06-11
+- Status: new
+
+## un giro de guion
+- Forms: noun phrase (m.)
+- Meaning: a plot twist / unexpected turn
+- Collocations: un giro de guion inesperado, vaya giro de guion, el mercado dio un giro de guion
+- Synonym: un vuelco, un cambio inesperado
+- Antonym: lo previsible, más de lo mismo
+- Hypernym: cambio
+- Example: Que la Fed bajara tipos en julio fue un giro de guion que nadie esperaba.
+- Added: 2026-06-10
+- Next review: 2026-06-11
+- Status: new
+
+## andar metido/a en algo
+- Forms: andar + metido/a + en + sust./activity (coloq., España)
+- Meaning: to be deep in / involved in (informal)
+- Collocations: andar metido en mil cosas, ¿en qué andas metido?, anda metido en cripto
+- Synonym: estar liado con, estar involucrado en
+- Antonym: estar al margen, no tocar nada de
+- Common mistake: ❌ "andar en algo" sin "metido" suena raro → ✅ "andar metido en".
+- Example: Últimamente ando metido en proyectos de agentes de IA.
+- Added: 2026-06-10
+- Next review: 2026-06-11
+- Status: new
+
 ## una herramienta de doble filo
 - Forms: fixed phrase (also: arma de doble filo)
 - Meaning: a double-edged sword

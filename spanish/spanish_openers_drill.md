@@ -61,11 +61,12 @@ _Phase 1 priority (first 4 weeks): **opinion + contrast**. Expand to all 8 categ
 - category: opinion
 - gloss_en: What I think is that...
 - gloss_cn: 我的想法是……
-- status: new
-- times_used: 0
-- last_used: null
-- next_review: tbd
-- notes: Strong frame for structured opinion. Common in writing.
+- status: learning
+- times_used: 1
+- last_used: 2026-06-09
+- next_review: 2026-06-12
+- example: (pending Gabriel's reply — Tue vocab+drills, escapada a Granada)
+- notes: Strong frame for structured opinion. Common in writing. Hoy = primer uso forzado en tarea de planificación de viaje.
 
 ### Category 2 — Contrast / pivot
 
@@ -74,21 +75,22 @@ _Phase 1 priority (first 4 weeks): **opinion + contrast**. Expand to all 8 categ
 - gloss_en: On one hand... on the other...
 - gloss_cn: 一方面……另一方面……
 - status: learning
-- times_used: 1
-- last_used: 2026-06-01
-- next_review: 2026-06-04
-- example: (used in Barça reading text — Gabriel's reuse pending)
-- notes: Backbone for any balanced argument. Pairs perfectly with *desde mi punto de vista*.
+- times_used: 2
+- last_used: 2026-06-07
+- next_review: 2026-06-10
+- example: (pending Gabriel's reply — Sun light review, retrospectiva semanal)
+- notes: Backbone for any balanced argument. Pairs perfectly with *desde mi punto de vista*. Hoy se reactiva como par estructurador para la retrospectiva.
 
 #### Sin embargo,...
 - category: contrast
 - gloss_en: However,...
 - gloss_cn: 然而……
-- status: new
-- times_used: 0
-- last_used: null
-- next_review: tbd
-- notes: B2 register, more written than spoken. Stronger pivot than *pero*.
+- status: learning
+- times_used: 1
+- last_used: 2026-06-10
+- next_review: 2026-06-13
+- example: (pending Gabriel's reply — Wed roleplay café sobre tesis IA/cripto)
+- notes: B2 register, más escrito que hablado pero también funciona en habla cuidada. Pivote más fuerte que *pero*. Hoy = primer uso forzado en roleplay de mercado.
 
 #### Aun así,...
 - category: contrast
@@ -105,11 +107,12 @@ _Phase 1 priority (first 4 weeks): **opinion + contrast**. Expand to all 8 categ
 - category: contrast
 - gloss_en: That said,...
 - gloss_cn: 话虽如此……
-- status: new
-- times_used: 0
-- last_used: null
-- next_review: tbd
-- notes: Smooth pivot in extended argument. Very B2.
+- status: learning
+- times_used: 1
+- last_used: 2026-06-06
+- next_review: 2026-06-09
+- example: (pending Gabriel's reply — Sat debate IA vs. analistas junior, tertulia de café)
+- notes: Smooth pivot in extended argument. Very B2. Perfect after conceding a point: "Tienes parte de razón en X. Dicho esto, Y."
 
 #### Ahora bien,...
 - category: contrast
@@ -171,3 +174,7 @@ _Format: `YYYY-MM-DD — opener — context — Gabriel's sentence — accuracy 
 2026-06-03 — Sin embargo,... — Writing-gym opinion piece on AI agents wave — pending — pending
 2026-06-04 — Yo diría que... — Café roleplay sobre mercados / IA / cripto — pending — pending
 2026-06-05 — Aun así,... — Listening + resumen sobre partido Barça (radio post-partido) — pending — pending
+2026-06-06 — Dicho esto,... — Sat debate (tertulia de café): ¿la IA sustituye a los analistas junior o los potencia? — pending — pending
+2026-06-07 — Por un lado... por otro... — Sun light review: retrospectiva de la semana (trabajo + mercados + Barça) — pending — pending
+2026-06-09 — Lo que pienso es que... — Tue vocab+drills: escapada a Granada (travel/Spain) — pending — pending
+2026-06-10 — Sin embargo,... — Wed conversation/roleplay: charla de café sobre tesis de inversión (cripto / IA / bolsa) — pending — pending

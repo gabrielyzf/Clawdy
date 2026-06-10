@@ -5,7 +5,7 @@ _Last updated: 2026-05-31_
 ## Background
 - Native: Chinese (Mandarin)
 - Strong working language: English
-- Spanish learning history: **Duolingo (current, 74-day streak)** + several textbooks downloaded but not actively followed
+- Spanish learning history: **Duolingo (current, Spanish score = 74 puntos · racha activa: 650 días 🔥)** + several textbooks downloaded but not actively followed
 - Active curriculum: **none** — Duolingo is the only structured input right now
 - Available materials: textbooks downloaded (not yet specified which); ready to feed table-of-contents to coach when picked
 - Lives: Asia/Shanghai (UTC+8)
@@ -131,6 +131,6 @@ Dual-skill lessons count toward both. Coach auto-corrects toward weak skills (sp
 Telegram (this group, topic 701 "Spanish")
 
 ## Current curriculum
-_(no formal textbook in active use; Duolingo daily streak is the baseline)_
+_(no formal textbook in active use; Duolingo Spanish score = 74 puntos as baseline indicator. Streak: 650 días — disciplina diaria sólida, but Duolingo solo no llevará a B2 activo; coach trabaja la conversión pasivo→activo en paralelo.)_
 
 When Gabriel starts following a textbook, this section captures: textbook name, current chapter/unit, current grammar/function focus, and target completion. Coach aligns daily lessons to this when present.
